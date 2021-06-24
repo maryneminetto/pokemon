@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+.btn {
+    font-size: 1rem;
+    font-weight: 700;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 1rem;
+}
+
+.btn:hover {
+    background: white;
+    color: #1E3A8A;
+    transition: 0.4s;
+}
+
+.btn-blue {
+    font-size: 1rem;
+    font-weight: 700;
+    border: 1px solid #1E3A8A;
+    border-radius: 3px;
+    color: #1E3A8A;
+    padding: 1rem;
+}
+
+.btn-blue:hover {
+    background: #1E3A8A;
+    color: white;
+    transition: 0.4s;
+}
