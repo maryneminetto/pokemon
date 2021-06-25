@@ -3,6 +3,18 @@
 include '../controller/displayPokemonController.php';
 include '../controller/session.php';
 
+if($_SESSION['nextPage']) {
+    $i = $_SESSION['nextPage'];
+} else {
+    $i = 0;
+}
+
+if($_SESSION['prevPage']) {
+    $y = $_SESSION['prevPage'];
+} else {
+    $y = 0;
+}
+
 ?>
 
 <!doctype html>
@@ -27,6 +39,11 @@ include '../controller/session.php';
     <div class="container flex flex-wrap mx-auto mt-6">
 
         <?php include 'displayPokemon.php'; ?>
+
+    </div>
+    <div class="container flex my-10 justify-center items-center">
+        <a href="../controller/displayPokemonController.php?nextPage=$i&prevPage=$y" class="btn-blue mr-4">Back</a>
+        <a href="../controller/displayPokemonController.php?nextPage=$i&prevPage=$y" class="btn-blue mr-4">Next</a>
 
     </div>
 </main>

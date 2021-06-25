@@ -18,7 +18,7 @@ class PokemonRepo
      */
     public function __construct()
     {
-        $this->url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=30";
+        $this->url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12";
     }
 
     /**
@@ -44,6 +44,16 @@ class PokemonRepo
     {
         return $this->url;
     }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl(int $offset): void
+    {
+        $this->url = "https://pokeapi.co/api/v2/pokemon/?offset=$offset&limit=12";
+    }
+
+
 
     public function getPokemon(){
         $json_data = file_get_contents($this->getUrl());
