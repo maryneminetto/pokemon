@@ -3,6 +3,7 @@
 include_once 'Pokemon.php';
 
 include_once '../model/Type.php';
+include_once '../model/Ability.php';
 
 
 class PokemonRepo
@@ -76,19 +77,31 @@ class PokemonRepo
                 $json = json_decode($json_data, true);
                 $json = array_slice($json, 3);
                 $name = $json['name'];
-                $logo = $json['sprites']['other']['dream_world']['front_default'];
+                $logo = $json['sprites']['front_default'];
                 $imageOffi = $json['sprites']['other']['official-artwork']['front_default'];
                 $order = $json['order'];
                 $types = [];
                 $id = $json['id'];
                 $stats = [];
+                $abilities = [];
                 foreach ($json['types'] as $type) {
                     $types[] = new Type($type['type']['name']);
                 }
                 foreach($json['stats'] as $stat) {
                     $stats[$stat['stat']['name']] = $stat['base_stat'];
                 }
-                $pokedex[] = new Pokemon($name, $logo, $imageOffi, $order, $types, $id, $stats);
+                foreach ($json['abilities'] as $ability){
+                    $ability = array_slice($ability, 0, 2);
+                    $abilityName = $ability['ability']['name'];
+                    $abilitiesEffect = $this->getAData($ability['ability']['url']);
+                    foreach($abilitiesEffect['effect_entries'] as $effect) {
+                        if($effect['language']['name'] == 'en') {
+                            $abilities[$abilityName] = new Ability($abilityName, $effect['effect']);
+                        }
+                    }
+
+                }
+                $pokedex[] = new Pokemon($name, $logo, $imageOffi, $order, $types, $id, $stats, $abilities);
                 $this->setArray($pokedex);
             }
 
@@ -101,6 +114,8 @@ class PokemonRepo
             return $json;
         }
 
+
+
         public function getAPokemon($url)
         {
             $json = $this->getAData($url);
@@ -111,13 +126,25 @@ class PokemonRepo
             $types = [];
             $id = $json['id'];
             $stats = [];
+            $abilities = [];
             foreach ($json['types'] as $type) {
                 $types[] = new Type($type['type']['name']);
             }
             foreach($json['stats'] as $stat) {
                 $stats[$stat['stat']['name']] = $stat['base_stat'];
             }
-            $this->setArray([new Pokemon($name, $logo, $imageOffi, $order, $types, $id, $stats)]);
+            foreach ($json['abilities'] as $ability){
+                $ability = array_slice($ability, 0, 2);
+                $abilityName = $ability['ability']['name'];
+                $abilitiesEffect = $this->getAData($ability['ability']['url']);
+                foreach($abilitiesEffect['effect_entries'] as $effect) {
+                    if($effect['language']['name'] == 'en') {
+                        $abilities[$abilityName] = new Ability($abilityName, $effect['effect']);
+                    }
+                }
+
+            }
+            $this->setArray([new Pokemon($name, $logo, $imageOffi, $order, $types, $id, $stats, $abilities)]);
 
         }
 
