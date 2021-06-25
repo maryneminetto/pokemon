@@ -22,6 +22,7 @@ foreach($_SESSION['pokedex'] as $poke=>$info){
                 }
                 ?>
             </div>
+
             <a href="displayDetail.php?url=https://pokeapi.co/api/v2/pokemon/<?php echo $info->getId() ?>/" class="btn-blue px-4 py-2 mt-6 w-40 font-semibold text-center">Voir la fiche</a>
         </div>
     </div>

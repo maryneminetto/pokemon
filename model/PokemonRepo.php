@@ -81,10 +81,14 @@ class PokemonRepo
                 $order = $json['order'];
                 $types = [];
                 $id = $json['id'];
+                $stats = [];
                 foreach ($json['types'] as $type) {
                     $types[] = new Type($type['type']['name']);
                 }
-                $pokedex[] = new Pokemon($name, $logo, $imageOffi, $order, $types, $id);
+                foreach($json['stats'] as $stat) {
+                    $stats[$stat['stat']['name']] = $stat['base_stat'];
+                }
+                $pokedex[] = new Pokemon($name, $logo, $imageOffi, $order, $types, $id, $stats);
                 $this->setArray($pokedex);
             }
 
@@ -106,10 +110,15 @@ class PokemonRepo
             $order = $json['order'];
             $types = [];
             $id = $json['id'];
+            $stats = [];
             foreach ($json['types'] as $type) {
                 $types[] = new Type($type['type']['name']);
             }
-            $this->setArray([new Pokemon($name, $logo, $imageOffi, $order, $types, $id)]);
+            foreach($json['stats'] as $stat) {
+                $stats[$stat['stat']['name']] = $stat['base_stat'];
+            }
+            $this->setArray([new Pokemon($name, $logo, $imageOffi, $order, $types, $id, $stats)]);
+
         }
 
     }

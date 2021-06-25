@@ -10,6 +10,7 @@ class Pokemon
     private int $number;
     private array $type;
     private int $id;
+    private array $stats;
 
     /**
      * Pokemon constructor.
@@ -18,8 +19,10 @@ class Pokemon
      * @param string $img2
      * @param int $number
      * @param array $type
+     * @param int $id
+     * @param array $stats
      */
-    public function __construct(string $name, string $img, string $img2, int $number, array $type, int $id)
+    public function __construct(string $name, string $img, string $img2, int $number, array $type, int $id, array $stats)
     {
         $this->name = $name;
         $this->img = $img;
@@ -27,6 +30,7 @@ class Pokemon
         $this->number = $number;
         $this->type = $type;
         $this->id = $id;
+        $this->stats = $stats;
     }
 
     /**
@@ -84,6 +88,15 @@ class Pokemon
     {
         $this->id = $id;
     }
+
+    /**
+     * @return array
+     */
+    public function getStats(): array
+    {
+        return $this->stats;
+    }
+
 
 
 
