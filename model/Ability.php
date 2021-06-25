@@ -34,8 +34,4 @@ class Ability
     {
         return $this->effect;
     }
-
-
-
-
 }

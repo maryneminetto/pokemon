@@ -1,6 +1,7 @@
 <?php
 
 include '../controller/displayPokemonController.php';
+include '../controller/session.php';
 
 ?>
 
@@ -25,7 +26,7 @@ include '../controller/displayPokemonController.php';
 <main>
     <div class="container flex flex-wrap mx-auto mt-6">
 
-        <?php include 'displayPokemon.php'?>
+        <?php include 'displayPokemon.php'; ?>
 
     </div>
 </main>

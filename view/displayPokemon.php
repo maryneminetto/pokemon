@@ -1,9 +1,6 @@
 <?php
 
-include_once '../controller/session.php';
-include_once '../controller/displayPokemonController.php';
-
-foreach($_SESSION['pokedex'] as $poke=>$info){
+foreach($pokemonsArray as $poke=>$info){
     ?>
     <div class='flex flex-col justify-center items-center border-8 border-blue-900 p-4 m-4 rounded-lg'>
         <img src="<?php echo $info->getImg() ?>" class="w-72 max-h-72">
@@ -17,7 +14,7 @@ foreach($_SESSION['pokedex'] as $poke=>$info){
 
                 foreach ($info->getType() as $type){
                     ?>
-                    <img src="../img/<?php echo $type->getName() ?>.png" alt="" width="100px" class="mx-4">
+                    <img src="<?php echo $type->getImg() ?>" alt="" width="100px" class="mx-4">
                     <?php
                 }
                 ?>

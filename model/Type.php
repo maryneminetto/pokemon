@@ -4,14 +4,17 @@
 class Type
 {
     private string $name;
+    private string $img;
 
     /**
      * Type constructor.
      * @param string $name
+     * @param string $img
      */
-    public function __construct(string $name)
+    public function __construct(string $name, string $img)
     {
         $this->name = $name;
+        $this->img = $img;
     }
 
     /**
@@ -21,14 +24,17 @@ class Type
     {
         return $this->name;
     }
-
     /**
-     * @param string $name
+     * @return string|string
      */
-    public function setName(string $name): void
+    public function getImg()
     {
-        $this->name = $name;
+        return $this->img;
     }
+
+
+
+
 
 
 
