@@ -87,7 +87,8 @@ include '../controller/displayDetailsController.php';
                         <?php
                         foreach ($info->getAbilities() as $nomAbility => $value) {
                             ?>
-                            <p class="text-md text-center font-semibold uppercase my-2 w-10/12"> <span class="ml-4 bg-blue-900 text-white p-1.5 rounded-md"><?php echo $nomAbility." : "; ?> </span>  <span class="font-normal lowercase ml-4"> <?php echo $value->getEffect(); ?> </span> </p>
+                            <p class="ml-4 bg-blue-900 text-white font-semibold uppercase  p-1.5 rounded-md"><?php echo $nomAbility; ?> <?php if($value->isHidden() == 1) echo "<span class='lowercase italic'>(hidden)</span>"; ?></p>
+                            <p class="text-md text-center my-2 w-10/12"> <?php echo $value->getEffect(); ?> </p>
                             <?php
 
                         }

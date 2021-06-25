@@ -102,9 +102,10 @@ class PokemonRepo
             $ability = array_slice($ability, 0, 2);
             $abilityName = $ability['ability']['name'];
             $abilitiesEffect = $this->getAData($ability['ability']['url']);
+            $abilityHidden = $ability['is_hidden'];
             foreach($abilitiesEffect['effect_entries'] as $effect) {
                 if($effect['language']['name'] == 'en') {
-                    $abilities[$abilityName] = new Ability($abilityName, $effect['effect']);
+                    $abilities[$abilityName] = new Ability($abilityName, $effect['effect'], $abilityHidden);
                 }
             }
 

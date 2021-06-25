@@ -6,16 +6,19 @@ class Ability
 
     private string $name;
     private string $effect;
+    private bool $hidden;
 
     /**
      * Ability constructor.
      * @param string $name
      * @param string $effect
+     * @param bool $hidden
      */
-    public function __construct(string $name, string $effect)
+    public function __construct(string $name, string $effect, bool $hidden)
     {
         $this->name = $name;
         $this->effect = $effect;
+        $this->hidden = $hidden;
     }
 
 
@@ -34,4 +37,14 @@ class Ability
     {
         return $this->effect;
     }
+
+    /**
+     * @return bool
+     */
+    public function isHidden(): bool
+    {
+        return $this->hidden;
+    }
+
+
 }
