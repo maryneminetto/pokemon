@@ -3,16 +3,23 @@
 include '../controller/displayPokemonController.php';
 include '../controller/session.php';
 
-if($_SESSION['nextPage']) {
-    $i = $_SESSION['nextPage'];
-} else {
+if(isset($_SESSION['nextPage'])) {
+$i = $_SESSION['nextPage'];
+$_SESSION['prevPage']=$i;
+
+}else {
     $i = 0;
 }
 
-if($_SESSION['prevPage']) {
-    $y = $_SESSION['prevPage'];
-} else {
-    $y = 0;
+if(isset($_SESSION['prevPage'])){
+    $i = $_SESSION['prevPage'];
+    $_SESSION['nextPage']=$i;
+}
+
+
+
+if(isset($_SESSION['returnPage'])) {
+    $i = $_SESSION['returnPage'];
 }
 
 ?>
@@ -42,8 +49,8 @@ if($_SESSION['prevPage']) {
 
     </div>
     <div class="container flex my-10 justify-center items-center">
-        <a href="../controller/displayPokemonController.php?nextPage=$i&prevPage=$y" class="btn-blue mr-4">Back</a>
-        <a href="../controller/displayPokemonController.php?nextPage=$i&prevPage=$y" class="btn-blue mr-4">Next</a>
+        <a href="../controller/displayPokemonController.php?prevPage=$i" class="btn-blue mr-4">Back</a>
+        <a href="../controller/displayPokemonController.php?nextPage=$" class="btn-blue mr-4">Next</a>
 
     </div>
 </main>

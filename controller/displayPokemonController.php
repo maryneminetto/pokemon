@@ -18,7 +18,7 @@ if(sizeof($_SESSION) == 0) {
 
 if(isset($_GET['nextPage'])) {
     header('location: ../view/accueil.php');
-    $_SESSION['nextPage'] = $_GET['nextPage'] + 12;
+    $_SESSION['nextPage'] += 12;
     $pokemon->setUrl($_SESSION['nextPage']);
     $pokemon->createPokemon();
     $pokemons = $pokemon->getArray();
@@ -28,8 +28,21 @@ if(isset($_GET['nextPage'])) {
 
 if(isset($_GET['prevPage'])) {
     header('location: ../view/accueil.php');
-    $_SESSION['prevPage'] = $_GET['prevPage'] - 12;
+    $_SESSION['prevPage'] -= 12;
+    print_r($_SESSION['prevPage']);
     $pokemon->setUrl($_SESSION['prevPage']);
+    $pokemon->createPokemon();
+    $pokemons = $pokemon->getArray();
+    $_SESSION['pokedex'] = $pokemons;
+
+}
+
+if(isset($_GET['returnPage'])) {
+    header('location: ../view/accueil.php');
+    $_SESSION['returnPage'] = 0;
+    $_SESSION['nextPage'] = 0;
+    $_SESSION['prevPage'] = 0;
+    $pokemon->setUrl($_SESSION['returnPage']);
     $pokemon->createPokemon();
     $pokemons = $pokemon->getArray();
     $_SESSION['pokedex'] = $pokemons;
