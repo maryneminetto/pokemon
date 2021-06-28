@@ -53,8 +53,8 @@ include '../controller/searchPokemonController.php';
                     <option value="ground">ground</option>
                     <option value="ice">ice</option>
                     <option value="normal">normal</option>
-                    <option value="physic">physic</option>
                     <option value="poison">poison</option>
+                    <option value="psychic">psychic</option>
                     <option value="rock">rock</option>
                     <option value="steel">steel</option>
                     <option value="water">water</option>
