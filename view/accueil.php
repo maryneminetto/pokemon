@@ -31,6 +31,12 @@ if (!isset($_SESSION['offset'])) {
 </header>
 
 <main>
+
+    <form action="search.php" method="post">
+        <input type="text" name="name" placeholder="Search your Pokemon">
+        <input type="submit">
+    </form>
+
     <div class="container flex flex-wrap mx-auto mt-6">
 
         <?php include 'displayPokemon.php'; ?>
