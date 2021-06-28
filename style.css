@@ -34,3 +34,16 @@
     transition: 0.4s;
 }
 
+.btn-sub {
+    background: transparent;
+    cursor: pointer;
+    color: #1E3A8A;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+.btn-sub:hover{
+    background: #1E3A8A;
+    border-radius: 3px;
+    color: white;
+    transition: 0.4s;
+}

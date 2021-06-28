@@ -6,7 +6,6 @@ include_once '../controller/displayPokemonController.php';
 
 $pokemonsArray = array_slice($_SESSION['pokeList'], $_SESSION['offset'], 12);
 
-print_r($_SESSION['pokeList']);
 
 foreach($pokemonsArray as $poke=>$info){
     ?>

@@ -53,8 +53,6 @@ class PokemonRepo
         $this->url = "https://pokeapi.co/api/v2/pokemon/?offset=$offset&limit=12";
     }
 
-
-
     public function getPokemon(){
         $json_data = file_get_contents($this->getUrl());
         $json = json_decode($json_data, true);
@@ -122,5 +120,6 @@ class PokemonRepo
         }
         return new Pokemon($name, $logo, $imageOffi, $order, $types, $id, $stats, $abilities);
     }
+
 
 }
