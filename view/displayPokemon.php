@@ -1,5 +1,13 @@
 <?php
 
+include_once '../controller/displayPokemonController.php';
+
+
+
+$pokemonsArray = array_slice($_SESSION['pokeList'], $_SESSION['offset'], 12);
+
+print_r($_SESSION['pokeList']);
+
 foreach($pokemonsArray as $poke=>$info){
     ?>
     <div class='flex flex-col justify-center items-center border-8 border-blue-900 p-4 m-4 rounded-lg'>

@@ -2,54 +2,92 @@
 
 include_once '../model/PokemonRepo.php';
 include 'session.php';
-//$_SESSION = [];
-//session_destroy();
+
 
 $pokemon = new PokemonRepo();
 $pokemonsArray = [];
+
+
 
 if(sizeof($_SESSION) == 0) {
     $pokemon->createPokemon();
     $pokemons = $pokemon->getArray();
     $_SESSION['pokedex'] = $pokemons;
+    $_SESSION['pokeList'] = [];
+
 }
 
 
 
 if(isset($_GET['nextPage'])) {
     header('location: ../view/accueil.php');
-    $_SESSION['nextPage'] += 12;
-    $pokemon->setUrl($_SESSION['nextPage']);
+    $_SESSION['offset'] += 12;
+    $pokemon->setUrl($_SESSION['offset']);
     $pokemon->createPokemon();
     $pokemons = $pokemon->getArray();
     $_SESSION['pokedex'] = $pokemons;
+
+
+}
+
+if(isset($_GET['nextPagex2'])) {
+    header('location: ../view/accueil.php');
+    $_SESSION['offset'] += 24;
+    $pokemon->setUrl($_SESSION['offset']);
+    $pokemon->createPokemon();
+    $pokemons = $pokemon->getArray();
+    $_SESSION['pokedex'] = $pokemons;
+
 
 }
 
 if(isset($_GET['prevPage'])) {
     header('location: ../view/accueil.php');
-    $_SESSION['prevPage'] -= 12;
-    print_r($_SESSION['prevPage']);
-    $pokemon->setUrl($_SESSION['prevPage']);
+    $_SESSION['offset'] -= 12;
+    $pokemon->setUrl($_SESSION['offset']);
     $pokemon->createPokemon();
     $pokemons = $pokemon->getArray();
     $_SESSION['pokedex'] = $pokemons;
+
+
+}
+
+if(isset($_GET['prevPagex2'])) {
+    header('location: ../view/accueil.php');
+    $_SESSION['offset'] -= 24;
+    $pokemon->setUrl($_SESSION['offset']);
+    $pokemon->createPokemon();
+    $pokemons = $pokemon->getArray();
+    $_SESSION['pokedex'] = $pokemons;
+
 
 }
 
 if(isset($_GET['returnPage'])) {
+    //$_SESSION = [];
+    //destroy_session;
     header('location: ../view/accueil.php');
-    $_SESSION['returnPage'] = 0;
-    $_SESSION['nextPage'] = 0;
-    $_SESSION['prevPage'] = 0;
-    $pokemon->setUrl($_SESSION['returnPage']);
+    $_SESSION['offset'] = 0;
+    $pokemon->setUrl($_SESSION['offset']);
     $pokemon->createPokemon();
     $pokemons = $pokemon->getArray();
     $_SESSION['pokedex'] = $pokemons;
 
+
 }
 
-$pokemonsArray = $_SESSION['pokedex'];
+if(isset($_SESSION['pokeList'])){
+    if (in_array($_SESSION['pokedex'],$_SESSION['pokeList'])==true){
+
+    }else {
+        $_SESSION['pokeList'] = array_unique(array_merge($_SESSION['pokeList'], $_SESSION['pokedex']), SORT_REGULAR);
+    }
+
+}else {
+    $_SESSION['pokeList'] = [];
+}
+
+
 
 
 
