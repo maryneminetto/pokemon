@@ -64,8 +64,8 @@ if(isset($_GET['prevPagex2'])) {
 }
 
 if(isset($_GET['returnPage'])) {
-    //$_SESSION = [];
-    //destroy_session;
+    $_SESSION = [];
+    session_destroy();
     header('location: ../view/accueil.php');
     $_SESSION['offset'] = 0;
     $pokemon->setUrl($_SESSION['offset']);

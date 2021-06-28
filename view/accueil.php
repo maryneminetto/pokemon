@@ -5,7 +5,6 @@ include '../controller/session.php';
 
 if (!isset($_SESSION['offset'])) {
     $_SESSION['offset'] = 0;
-    echo $_SESSION['offset'];
 }
 
 ?>

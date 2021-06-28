@@ -18,7 +18,7 @@ class PokemonRepo
      */
     public function __construct()
     {
-        $this->url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12";
+        $this->url = "https://pokeapi.co/api/v2/pokemon/?limit=50";
     }
 
     /**
@@ -119,6 +119,19 @@ class PokemonRepo
 
         }
         return new Pokemon($name, $logo, $imageOffi, $order, $types, $id, $stats, $abilities);
+    }
+
+    public function getPokemonWithName(){
+        $json_data = file_get_contents($this->getUrl());
+        $json = json_decode($json_data, true);
+        $json = array_slice($json, 3);
+        $tab = [];
+        foreach ($json as $pokemon) {
+            foreach ($pokemon as $aPokemon) {
+                $tab[] = $aPokemon;
+            }
+        }
+        return $tab;
     }
 
 
