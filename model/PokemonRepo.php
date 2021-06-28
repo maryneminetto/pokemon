@@ -18,7 +18,7 @@ class PokemonRepo
      */
     public function __construct()
     {
-        $this->url = "https://pokeapi.co/api/v2/pokemon/?limit=50";
+        $this->url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=12";
     }
 
     /**
