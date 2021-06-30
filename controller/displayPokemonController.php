@@ -1,7 +1,8 @@
 <?php
 
+
 include_once '../model/PokemonRepo.php';
-include 'session.php';
+include_once 'session.php';
 
 
 $pokemon = new PokemonRepo();
