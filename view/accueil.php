@@ -1,13 +1,11 @@
 <?php
 
-include_once '../model/User.php';
-include_once '../controller/displayPokemonController.php';
-include_once '../controller/connectionController.php';
+include '../controller/displayPokemonController.php';
+include '../controller/session.php';
 
 if (!isset($_SESSION['offset'])) {
     $_SESSION['offset'] = 0;
 }
-
 
 ?>
 
@@ -30,10 +28,6 @@ if (!isset($_SESSION['offset'])) {
 <header>
     <?php include 'header.php'; ?>
 </header>
-
-<article>
-    <h2 class=" text-xl text-center font-semibold mb-2 mt-4"><?php if (isset($_SESSION['user'])){echo "Bienvenue ".$_SESSION['user']->getFirstName()." ".$_SESSION['user']->getLastName();}  ?></h2>
-</article>
 
 <main>
 

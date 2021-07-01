@@ -21,7 +21,7 @@ if (isset($_POST['connect'])){
 
             if ($item->email){
                 if (password_verify($userPassword,$item->password)){
-                    $user = new User($item->firstName, $item->lastName, $item->email, $item->id);
+                    $user = new User($item->firstName, $item->lastName, $item->email);
                     $_SESSION['user'] = $user;
                     $pdo = new PDO('mysql:host=localhost;dbname=exo_connection', 'root','');
                     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
