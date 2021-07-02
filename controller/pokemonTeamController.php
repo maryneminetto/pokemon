@@ -50,8 +50,6 @@ if (isset($_POST['displayTeam'])){
     $query->execute(array(':id_Dresseur' => $_SESSION['user']->getId(), ":teamname"=>$_POST['selectTeam']));
     $row = $query->fetchAll(PDO::FETCH_OBJ);
     header('location: ../view/pokemonTeam.php?team='.$_POST['selectTeam']);
-
-
 }
 
 if (isset($_GET['delete'])) {

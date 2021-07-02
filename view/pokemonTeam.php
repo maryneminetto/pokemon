@@ -34,7 +34,7 @@ include_once '../controller/pokemonTeamController.php';
             ?>
         </select>
         <input type="hidden" name="pokeNumber" value="<?php echo $_GET['pokedexNumber']; ?>">
-        <input type="submit" name="displayTeam">
+        <input type="submit" name="displayTeam" class="btn-sub my-2">
     </form>
     <h2 class=" text-xl text-center text-blue-900 font-semibold mb-2 mt-4">Equipe de <?php echo $_SESSION['user']->getFirstName() . ' ' . $_SESSION['user']->getLastName() ?></h2>
 
@@ -62,6 +62,7 @@ include_once '../controller/pokemonTeamController.php';
         <div class="flex justify-center items-center flex-wrap">
 
         <?php
+
         foreach ($row as $info) {
             ?>
             <div class='flex flex-col justify-center items-center border-8 border-blue-900 p-4 m-4 rounded-lg'>

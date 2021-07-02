@@ -35,13 +35,13 @@ include_once '../controller/selectTeamController.php';
                 ?>
             </select>
             <input type="hidden" name="pokeNumber" value="<?php echo $_GET['pokedexNumber']; ?>">
-            <input type="submit" name="submitTeam">
+            <input type="submit" name="submitTeam" class="btn-sub my-2">
         </form>
         <h2 class=" text-xl text-center font-semibold uppercase mb-2 mt-4">Create a team</h2>
         <form action="../controller/pokemonTeamController.php" method="post" class="flex flex-col justify-center items-center mt-4">
-            <input type="text" name="teamName">
+            <input type="text" name="teamName" class="border-b border-blue-900">
             <input type="hidden" name="pokeNumber" value="<?php echo $_GET['pokedexNumber']; ?>">
-            <input type="submit" name="submitTeamName">
+            <input type="submit" name="submitTeamName" class="btn-sub my-2">
         </form>
     </div>
 </div>
