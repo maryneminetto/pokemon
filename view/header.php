@@ -6,6 +6,7 @@
         if (isset($_SESSION['user'])){
             ?>
             <a href="../controller/disconnectController.php" class="btn">Disconnect</a>
+            <a href="../view/pokemonTeam.php" class="btn">My Team</a>
             <?php
         }else{
             ?>

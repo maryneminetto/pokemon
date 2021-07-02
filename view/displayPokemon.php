@@ -28,7 +28,8 @@ foreach($pokemonsArray as $poke=>$info){
             </div>
 
             <a href="displayDetail.php?url=https://pokeapi.co/api/v2/pokemon/<?php echo $info->getId() ?>/" class="btn-blue px-4 py-2 mt-6 w-40 font-semibold text-center">Voir la fiche</a>
-            <a href="../controller/pokemonTeamController.php?number=<?php echo $info->getNumber() ?>" class="btn-blue px-4 py-2 mt-6 w-40 font-semibold text-center">Ajouter à la team</a>
+
+            <a href="../controller/pokemonTeamController.php?pokedexNumber=<?php echo $info->getNumber() ?>" class="btn-blue px-4 py-2 mt-6 w-40 font-semibold text-center">Ajouter dans l'équipe</a>
         </div>
     </div>
     <?php

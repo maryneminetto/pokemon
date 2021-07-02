@@ -1,5 +1,7 @@
 <?php
 include '../controller/pokemonTeamController.php';
+
+
 ?>
 
 <!doctype html>
@@ -13,33 +15,46 @@ include '../controller/pokemonTeamController.php';
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <title>Pokemon | Team</title>
+    <title>Pokemon | Accueil</title>
 </head>
 <body>
+<header><?php include 'header.php'; ?></header>
+<article>
+    <h2>Equipe de <?php echo $_SESSION['user']->getFirstName() . ' ' . $_SESSION['user']->getLastName() ?></h2>
 
-<header>
-    <?php include 'header.php' ?>
-</header>
-<h2 class="text-center uppercase">My Pokemon Team</h2>
-<div class="container flex mx-auto">
+    <?php if (isset($_SESSION['user'])) {
 
-<?php
+        ?><h1> Bienvenue dans l'équipe nommée <?php echo $row[0]->teamName ?></h1>
 
-foreach ($row as $info){
-    var_dump($info);
+        <?php
+    }
+
     ?>
+    <h2 class="justify-center flex flex-wrap text-xl text-center font-semibold mb-2 mt-4">
+        <?php
+        foreach ($row as $info) {
+            ?>
+            <div class='flex flex-col justify-center items-center border-8 border-blue-900 p-4 m-4 rounded-lg'>
+                <img src="<?php echo $info->pathLogo ?>" class="w-72 max-h-72">
+                <div class="content flex flex-col justify-center items-center text-gray-900 my-auto p-4">
+                    <div class="title flex justify-center items-center mb-5">
+                        <p class="text-xl text-center font-semibold uppercase border border-gray-900 py-2 px-4 rounded-full">
+                            # <?php echo $info->pokedexNumber ?> </p>
+                        <h2 class=" text-xl text-center font-semibold uppercase ml-5"><?php echo $info->name ?></h2>
+                    </div>
+                </div>
 
 
+                <a href="displayDetail.php?url=https://pokeapi.co/api/v2/pokemon/<?php echo $info->id_pokemon ?>/"
+                   class="btn-blue px-4 py-2 mt-6 w-40 font-semibold text-center">Voir la fiche</a>
+                <a href="../controller/teamController.php?delete=<?php echo $info->id_pokemon ?>"
+                   class="btn-blue px-4 py-2 mt-6 w-40 font-semibold text-center">Supprimer de l'équipe</a>
+            </div>
+            <?php
+        }
 
-</div>
-
-<?php
-}
-?>
-
-</div>
-<footer>
-    <?php include 'footer.php' ?>
-</footer>
+        ?>
+</article>
+<footer><?php include 'footer.php'; ?></footer>
 </body>
 </html>

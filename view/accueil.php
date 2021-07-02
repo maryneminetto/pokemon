@@ -1,7 +1,5 @@
 <?php
 
-include '../controller/displayPokemonController.php';
-include '../controller/session.php';
 include_once '../model/User.php';
 include_once '../controller/displayPokemonController.php';
 include_once '../controller/connectionController.php';
@@ -9,6 +7,7 @@ include_once '../controller/connectionController.php';
 if (!isset($_SESSION['offset'])) {
     $_SESSION['offset'] = 0;
 }
+
 
 ?>
 
@@ -51,15 +50,15 @@ if (!isset($_SESSION['offset'])) {
 </span><span class="material-icons">
             arrow_back_ios
 </span></a>
-         <?php
+            <?php
         } ?>
         <?php
         if($_SESSION['offset']!=0){
             ?>
-        <a href="../controller/displayPokemonController.php?prevPage=<?php echo $_SESSION['offset']?>" class="btn-blue mr-4"><span class="material-icons">
+            <a href="../controller/displayPokemonController.php?prevPage=<?php echo $_SESSION['offset']?>" class="btn-blue mr-4"><span class="material-icons">
 arrow_back_ios
 </span></a>
-        <?php
+            <?php
         }
         ?>
 

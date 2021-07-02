@@ -53,7 +53,8 @@ class PokemonRepo
         $this->url = "https://pokeapi.co/api/v2/pokemon/?offset=$offset&limit=12";
     }
 
-    public function getPokemon(){
+    public function getPokemon()
+    {
         $json_data = file_get_contents($this->getUrl());
         $json = json_decode($json_data, true);
         $json = array_slice($json, 3);
@@ -129,7 +130,7 @@ class PokemonRepo
         $queryPokemon->execute(array(':name' => $name));
         $row = $queryPokemon->fetch(PDO::FETCH_OBJ);
         if ($row == '') {
-            $queryPokemon = $pdo->prepare('INSERT INTO PokemonList(name, pokedexNumber, pathLogo, pathImage, hp, attack, defense, specialAttack, specialDefense, speed) VALUES(:name, :pokedexNumber, :pathLogo, :pathImg, :hp, :attack, :defense, :specialAttack, :specialDefense, :speed)');
+            $queryPokemon = $pdo->prepare('INSERT INTO PokemonList(name, pokedexNumber, pathLogo, pathImage, hp, attack, defense, specialAttack, specialDefense, speed, firstType, secondType) VALUES(:name, :pokedexNumber, :pathLogo, :pathImg, :hp, :attack, :defense, :specialAttack, :specialDefense, :speed, :firstType, :secondType)');
 
             $queryPokemon->execute(array(':name' => $name,
                     ':pokedexNumber' => $order,
@@ -174,7 +175,8 @@ class PokemonRepo
         return new Pokemon($name, $logo, $imageOffi, $order, $types, $id, $stats, $abilities);
     }
 
-    public function getPokemonWithName(){
+    public function getPokemonWithName()
+    {
         $json_data = file_get_contents($this->getUrl());
         $json = json_decode($json_data, true);
         $json = array_slice($json, 3);
@@ -186,6 +188,4 @@ class PokemonRepo
         }
         return $tab;
     }
-
-
 }
