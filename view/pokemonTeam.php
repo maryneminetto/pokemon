@@ -20,11 +20,11 @@ include '../controller/pokemonTeamController.php';
 <body>
 <header><?php include 'header.php'; ?></header>
 <article>
-    <h2>Equipe de <?php echo $_SESSION['user']->getFirstName() . ' ' . $_SESSION['user']->getLastName() ?></h2>
+    <h2 class=" text-xl text-center text-blue-900 font-semibold mb-2 mt-4">Equipe de <?php echo $_SESSION['user']->getFirstName() . ' ' . $_SESSION['user']->getLastName() ?></h2>
 
     <?php if (isset($_SESSION['user'])) {
 
-        ?><h1> Bienvenue dans l'équipe nommée <?php echo $row[0]->teamName ?></h1>
+        ?><h1 class=" text-2xl text-center text-gray-500 font-semibold mb-2 mt-4"> Bienvenue dans l'équipe nommée <?php echo $row[0]->teamName ?></h1>
 
         <?php
     }
@@ -47,7 +47,7 @@ include '../controller/pokemonTeamController.php';
 
                 <a href="displayDetail.php?url=https://pokeapi.co/api/v2/pokemon/<?php echo $info->id_pokemon ?>/"
                    class="btn-blue px-4 py-2 mt-6 w-40 font-semibold text-center">Voir la fiche</a>
-                <a href="../controller/teamController.php?delete=<?php echo $info->id_pokemon ?>"
+                <a href="../controller/pokemonTeamController.php?delete=<?php echo $info->id_pokemon ?>"
                    class="btn-blue px-4 py-2 mt-6 w-40 font-semibold text-center">Supprimer de l'équipe</a>
             </div>
             <?php
